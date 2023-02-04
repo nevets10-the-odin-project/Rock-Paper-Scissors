@@ -1,9 +1,28 @@
 "use strict";
 
-const playerSelection = getPlayerChoice();
-const computerSelection = getComputerChoice();
-
 game();
+
+function game() {
+	let playerScore = 0;
+	let computerScore = 0;
+
+	for (let i = 0; i < 5; i++) {
+		const playerSelection = getPlayerChoice();
+		const computerSelection = getComputerChoice();
+		let winner = "";
+
+		winner = playRound(playerSelection, computerSelection);
+
+		if (winner === "player") {
+			playerScore++;
+		} else if (winner === "computer") {
+			computerScore++;
+		}
+	}
+
+	console.log("Player Score", playerScore);
+	console.log("Computer Score", computerScore);
+}
 
 function getPlayerChoice() {
 	const choice = prompt("Rock, Paper or Scissors?", "");
@@ -19,23 +38,6 @@ function getComputerChoice() {
 	const randomNumber = Math.floor(Math.random() * choices.length);
 
 	return choices[randomNumber];
-}
-
-function game() {
-	let playerScore = 0;
-	let computerScore = 0;
-	let winner = "";
-
-	winner = playRound(playerSelection, computerSelection);
-
-	if (winner === "player") {
-		playerScore++;
-	} else if (winner === "computer") {
-		computerScore++;
-	}
-
-	console.log("Player Score", playerScore);
-	console.log("Computer Score", computerScore);
 }
 
 function playRound(playerSelection, computerSelection) {
