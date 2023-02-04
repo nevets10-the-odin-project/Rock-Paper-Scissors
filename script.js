@@ -3,7 +3,7 @@
 const playerSelection = getPlayerChoice();
 const computerSelection = getComputerChoice();
 
-playRound(playerSelection, computerSelection);
+game();
 
 function getPlayerChoice() {
 	const choice = prompt("Rock, Paper or Scissors?", "");
@@ -19,6 +19,10 @@ function getComputerChoice() {
 	const randomNumber = Math.floor(Math.random() * choices.length);
 
 	return choices[randomNumber];
+}
+
+function game() {
+	playRound(playerSelection, computerSelection);
 }
 
 function playRound(playerSelection, computerSelection) {
