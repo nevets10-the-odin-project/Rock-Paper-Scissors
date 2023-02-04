@@ -42,8 +42,8 @@ function game() {
 
 function getPlayerChoice() {
 	const choice = prompt("Rock, Paper or Scissors?", "") || "Nothing";
-	const lowerCaseChoice = choice.toLocaleLowerCase();
-	const capitalizedChoice = lowerCaseChoice.charAt(0).toLocaleUpperCase() + lowerCaseChoice.slice(1);
+	const lowerCaseChoice = choice.toLowerCase();
+	const capitalizedChoice = lowerCaseChoice.charAt(0).toUpperCase() + lowerCaseChoice.slice(1);
 
 	if (capitalizedChoice === "Rock" || capitalizedChoice === "Paper" || capitalizedChoice === "Scissors") {
 		return capitalizedChoice;
