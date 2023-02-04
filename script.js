@@ -10,20 +10,20 @@ function game() {
 	for (let i = 0; i < 5; i++) {
 		const playerSelection = getPlayerChoice();
 		const computerSelection = getComputerChoice();
-		let winner = "";
+		let roundResult = "";
 
 		console.log("Player", playerSelection);
 		console.log("Computer", computerSelection);
 
-		winner = playRound(playerSelection, computerSelection);
+		roundResult = playRound(playerSelection, computerSelection);
 
-		if (winner === "player") {
+		if (roundResult === "player") {
 			console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
 			playerScore++;
-		} else if (winner === "computer") {
+		} else if (roundResult === "computer") {
 			console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
 			computerScore++;
-		} else if (winner === "tie") {
+		} else if (roundResult === "tie") {
 			console.log("Tie!");
 			tieCount++;
 		}
