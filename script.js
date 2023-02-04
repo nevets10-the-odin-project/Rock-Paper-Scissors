@@ -12,8 +12,7 @@ function game() {
 		const computerSelection = getComputerChoice();
 		let roundResult = "";
 
-		console.log(`Player: ${playerSelection}`);
-		console.log(`Computer: ${computerSelection}`);
+		console.log(`Player: ${playerSelection} | Computer: ${computerSelection}`);
 
 		roundResult = playRound(playerSelection, computerSelection);
 
