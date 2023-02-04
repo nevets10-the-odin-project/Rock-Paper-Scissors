@@ -1,11 +1,13 @@
 "use strict";
 
+const playerSelection = "Rock";
+const computerSelection = getComputerChoice();
+
+console.log(computerSelection);
+
 function getComputerChoice() {
-    const choices = ["Rock", "Paper", "Scissors"];
-    const randomNumber = Math.floor(Math.random() * choices.length);
+  const choices = ["Rock", "Paper", "Scissors"];
+  const randomNumber = Math.floor(Math.random() * choices.length);
 
-    console.log(randomNumber);
-    console.log(choices[randomNumber]);
+  return choices[randomNumber];
 }
-
-getComputerChoice();
