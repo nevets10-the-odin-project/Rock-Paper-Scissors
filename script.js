@@ -20,8 +20,13 @@ function game() {
 		}
 	}
 
-	console.log("Player Score", playerScore);
-	console.log("Computer Score", computerScore);
+	if (playerScore > computerScore) {
+		console.log(`You Won! Player: ${playerScore} Computer: ${computerScore}`);
+	} else if (playerScore < computerScore) {
+		console.log(`You lost! Player: ${playerScore} Computer: ${computerScore}`);
+	} else {
+		console.log("It was a tie!?");
+	}
 }
 
 function getPlayerChoice() {
