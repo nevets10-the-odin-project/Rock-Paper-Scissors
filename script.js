@@ -12,25 +12,27 @@ function game() {
 		const computerSelection = getComputerChoice();
 		let winner = "";
 
+		console.log("Player", playerSelection);
+		console.log("Computer", computerSelection);
+
 		winner = playRound(playerSelection, computerSelection);
 
 		if (winner === "player") {
+			console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
 			playerScore++;
 		} else if (winner === "computer") {
+			console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
 			computerScore++;
 		} else if (winner === "tie") {
+			console.log("Tie!");
 			tieCount++;
 		}
 	}
 
 	if (playerScore > computerScore) {
-		console.log(
-			`You Won! Player: ${playerScore} Computer: ${computerScore} Ties: ${tieCount}`
-		);
+		console.log(`You Won! Player: ${playerScore} Computer: ${computerScore} Ties: ${tieCount}`);
 	} else if (playerScore < computerScore) {
-		console.log(
-			`You Lost! Player: ${playerScore} Computer: ${computerScore} Ties: ${tieCount}`
-		);
+		console.log(`You Lost! Player: ${playerScore} Computer: ${computerScore} Ties: ${tieCount}`);
 	} else {
 		console.log("It was a tie!?");
 	}
@@ -39,8 +41,7 @@ function game() {
 function getPlayerChoice() {
 	const choice = prompt("Rock, Paper or Scissors?", "");
 	const lowerCaseChoice = choice.toLocaleLowerCase();
-	const capitalizedChoice =
-		lowerCaseChoice.charAt(0).toLocaleUpperCase() + lowerCaseChoice.slice(1);
+	const capitalizedChoice = lowerCaseChoice.charAt(0).toLocaleUpperCase() + lowerCaseChoice.slice(1);
 
 	return capitalizedChoice;
 }
@@ -53,23 +54,15 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-	console.log("Player", playerSelection);
-	console.log("Computer", computerSelection);
-
 	if (playerSelection === computerSelection) {
-		console.log("Tie!");
 		return "tie";
 	} else if (playerSelection === "Rock" && computerSelection === "Scissors") {
-		console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
 		return "player";
 	} else if (playerSelection === "Paper" && computerSelection === "Rock") {
-		console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
 		return "player";
 	} else if (playerSelection === "Scissors" && computerSelection === "Paper") {
-		console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
 		return "player";
 	} else {
-		console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
 		return "computer";
 	}
 }
