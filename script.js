@@ -22,7 +22,12 @@ function getComputerChoice() {
 }
 
 function game() {
+	const playerScore = 0;
+	const computerScore = 0;
+
 	playRound(playerSelection, computerSelection);
+	console.log("Player Score", playerScore);
+	console.log("Computer Score", computerScore);
 }
 
 function playRound(playerSelection, computerSelection) {
