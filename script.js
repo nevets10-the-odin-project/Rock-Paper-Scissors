@@ -26,6 +26,9 @@ function game() {
 		} else if (roundResult === "tie") {
 			console.log("Tie!");
 			tieCount++;
+		} else {
+			console.log("Tie...?");
+			tieCount++;
 		}
 	}
 
