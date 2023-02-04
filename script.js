@@ -34,7 +34,7 @@ function game() {
 	} else if (playerScore < computerScore) {
 		console.log(`You Lost! Player: ${playerScore} Computer: ${computerScore} Ties: ${tieCount}`);
 	} else {
-		console.log("It was a tie!?");
+		console.log(`It was a tie!? Player: ${playerScore} Computer: ${computerScore} Ties: ${tieCount}`);
 	}
 }
 
