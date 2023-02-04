@@ -46,7 +46,12 @@ function getPlayerChoice() {
 	const lowerCaseChoice = choice.toLocaleLowerCase();
 	const capitalizedChoice = lowerCaseChoice.charAt(0).toLocaleUpperCase() + lowerCaseChoice.slice(1);
 
-	return capitalizedChoice;
+	if (capitalizedChoice === "Rock" || capitalizedChoice === "Paper" || capitalizedChoice === "Scissors") {
+		return capitalizedChoice;
+	} else {
+		console.log(`${capitalizedChoice} is not a valid choice. Let me choose for you.`);
+		return getComputerChoice();
+	}
 }
 
 function getComputerChoice() {
