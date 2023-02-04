@@ -5,7 +5,7 @@ game();
 function game() {
 	let playerScore = 0;
 	let computerScore = 0;
-	let tieCount = 0;
+	let drawCount = 0;
 
 	for (let i = 0; i < 5; i++) {
 		const playerSelection = getPlayerChoice();
@@ -23,21 +23,21 @@ function game() {
 		} else if (roundResult === "computer") {
 			console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
 			computerScore++;
-		} else if (roundResult === "tie") {
-			console.log("Tie!");
-			tieCount++;
+		} else if (roundResult === "draw") {
+			console.log("Draw!");
+			drawCount++;
 		} else {
-			console.log("Tie...?");
-			tieCount++;
+			console.log("Draw...?");
+			drawCount++;
 		}
 	}
 
 	if (playerScore > computerScore) {
-		console.log(`You Won! Player: ${playerScore} Computer: ${computerScore} Ties: ${tieCount}`);
+		console.log(`You Won! Player: ${playerScore} Computer: ${computerScore} Draws: ${drawCount}`);
 	} else if (playerScore < computerScore) {
-		console.log(`You Lost! Player: ${playerScore} Computer: ${computerScore} Ties: ${tieCount}`);
+		console.log(`You Lost! Player: ${playerScore} Computer: ${computerScore} Draws: ${drawCount}`);
 	} else {
-		console.log(`It was a tie!? Player: ${playerScore} Computer: ${computerScore} Ties: ${tieCount}`);
+		console.log(`It was a tie!? Player: ${playerScore} Computer: ${computerScore} Draws: ${drawCount}`);
 	}
 }
 
@@ -63,7 +63,7 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
 	if (playerSelection === computerSelection) {
-		return "tie";
+		return "draw";
 	} else if (playerSelection === "Rock" && computerSelection === "Scissors") {
 		return "player";
 	} else if (playerSelection === "Paper" && computerSelection === "Rock") {
