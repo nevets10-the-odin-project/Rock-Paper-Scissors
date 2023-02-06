@@ -3,7 +3,7 @@
 	 viewBox="0 0 80 80" style="enable-background:new 0 0 80 80;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#FFFFFF;}
-	.st1{fill:#32FF00;}
+	.st1{fill:green;}
 </style>
 <path id="outside" class="st0" d="M40,0C17.9,0,0,17.9,0,40s18,40,40,40s40-18,40-40S62,0,40,0z"/>
 <circle id="inside" class="st1" cx="40" cy="40" r="36"/>
