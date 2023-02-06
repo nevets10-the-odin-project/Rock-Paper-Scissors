@@ -1,6 +1,6 @@
 "use strict";
 
-game();
+//game();
 
 function game() {
 	let playerScore = 0;
@@ -32,23 +32,36 @@ function game() {
 	}
 
 	if (playerScore > computerScore) {
-		console.log(`You Won! Player: ${playerScore} Computer: ${computerScore} Draws: ${drawCount}`);
+		console.log(
+			`You Won! Player: ${playerScore} Computer: ${computerScore} Draws: ${drawCount}`
+		);
 	} else if (playerScore < computerScore) {
-		console.log(`You Lost! Player: ${playerScore} Computer: ${computerScore} Draws: ${drawCount}`);
+		console.log(
+			`You Lost! Player: ${playerScore} Computer: ${computerScore} Draws: ${drawCount}`
+		);
 	} else {
-		console.log(`It was a tie!? Player: ${playerScore} Computer: ${computerScore} Draws: ${drawCount}`);
+		console.log(
+			`It was a tie!? Player: ${playerScore} Computer: ${computerScore} Draws: ${drawCount}`
+		);
 	}
 }
 
 function getPlayerChoice() {
 	const choice = prompt("Rock, Paper or Scissors?", "") || "Nothing";
 	const lowerCaseChoice = choice.toLowerCase();
-	const capitalizedChoice = lowerCaseChoice.charAt(0).toUpperCase() + lowerCaseChoice.slice(1);
+	const capitalizedChoice =
+		lowerCaseChoice.charAt(0).toUpperCase() + lowerCaseChoice.slice(1);
 
-	if (capitalizedChoice === "Rock" || capitalizedChoice === "Paper" || capitalizedChoice === "Scissors") {
+	if (
+		capitalizedChoice === "Rock" ||
+		capitalizedChoice === "Paper" ||
+		capitalizedChoice === "Scissors"
+	) {
 		return capitalizedChoice;
 	} else {
-		console.log(`${capitalizedChoice} is not a valid choice. Let me choose for you.`);
+		console.log(
+			`${capitalizedChoice} is not a valid choice. Let me choose for you.`
+		);
 		return getComputerChoice();
 	}
 }
