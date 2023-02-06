@@ -1,5 +1,9 @@
 "use strict";
 
+const playerBtns = document.querySelectorAll(".options button");
+playerBtns.forEach((button) => {
+	button.addEventListener("click", populatePlayerChoice);
+});
 //game();
 
 function game() {
@@ -8,7 +12,7 @@ function game() {
 	let drawCount = 0;
 
 	for (let i = 0; i < 5; i++) {
-		const playerSelection = getPlayerChoice();
+		const playerSelection = populatePlayerChoice();
 		const computerSelection = getComputerChoice();
 		let roundResult = "";
 
@@ -46,24 +50,19 @@ function game() {
 	}
 }
 
-function getPlayerChoice() {
-	const choice = prompt("Rock, Paper or Scissors?", "") || "Nothing";
-	const lowerCaseChoice = choice.toLowerCase();
-	const capitalizedChoice =
-		lowerCaseChoice.charAt(0).toUpperCase() + lowerCaseChoice.slice(1);
+function populatePlayerChoice() {
+	const playerChoice = this.classList.value;
 
-	if (
-		capitalizedChoice === "Rock" ||
-		capitalizedChoice === "Paper" ||
-		capitalizedChoice === "Scissors"
-	) {
-		return capitalizedChoice;
-	} else {
-		console.log(
-			`${capitalizedChoice} is not a valid choice. Let me choose for you.`
-		);
-		return getComputerChoice();
-	}
+	const choiceParent = document.querySelector(".player .choice");
+
+	const img = document.createElement("img");
+	img.setAttribute("src", `./img/${playerChoice}.svg`);
+	img.setAttribute("alt", `${playerChoice}`);
+
+	const p = document.createElement("p");
+	p.textContent = `${playerChoice}`;
+
+	choiceParent.replaceChildren(img, p);
 }
 
 function getComputerChoice() {
