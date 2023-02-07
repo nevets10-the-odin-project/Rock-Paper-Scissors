@@ -2,86 +2,47 @@
 
 const playerBtns = document.querySelectorAll(".options button");
 playerBtns.forEach((button) => {
-	button.addEventListener("click", populatePlayerChoice);
+	button.addEventListener("click", playRound);
 });
-//game();
 
-function game() {
-	let playerScore = 0;
-	let computerScore = 0;
-	let drawCount = 0;
+function playRound() {
+	const playerChoice = this.classList.value;
+	const computerChoice = getComputerChoice();
 
-	for (let i = 0; i < 5; i++) {
-		const playerSelection = populatePlayerChoice();
-		const computerSelection = getComputerChoice();
-		let roundResult = "";
+	populateChoice(playerChoice, true);
+	populateChoice(computerChoice, false);
 
-		console.log(`Player: ${playerSelection} | Computer: ${computerSelection}`);
-
-		roundResult = playRound(playerSelection, computerSelection);
-
-		if (roundResult === "player") {
-			console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
-			playerScore++;
-		} else if (roundResult === "computer") {
-			console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
-			computerScore++;
-		} else if (roundResult === "draw") {
-			console.log("Draw!");
-			drawCount++;
-		} else {
-			console.log("Draw...?");
-			drawCount++;
-		}
-	}
-
-	if (playerScore > computerScore) {
-		console.log(
-			`You Won! Player: ${playerScore} Computer: ${computerScore} Draws: ${drawCount}`
-		);
-	} else if (playerScore < computerScore) {
-		console.log(
-			`You Lost! Player: ${playerScore} Computer: ${computerScore} Draws: ${drawCount}`
-		);
+	if (playerChoice === computerChoice) {
+		console.log("Draw");
+	} else if (playerChoice === "rock" && computerChoice === "scissors") {
+		console.log("Win");
+	} else if (playerChoice === "paper" && computerChoice === "rock") {
+		console.log("Win");
+	} else if (playerChoice === "scissors" && computerChoice === "paper") {
+		console.log("Win");
 	} else {
-		console.log(
-			`It was a tie!? Player: ${playerScore} Computer: ${computerScore} Draws: ${drawCount}`
-		);
+		console.log("Lose");
 	}
 }
 
-function populatePlayerChoice() {
-	const playerChoice = this.classList.value;
-
-	const choiceParent = document.querySelector(".player .choice");
+function populateChoice(choice, isPlayer) {
+	const choiceParent = document.querySelector(
+		`.${isPlayer ? "player" : "computer"} .choice`
+	);
 
 	const img = document.createElement("img");
-	img.setAttribute("src", `./img/${playerChoice}.svg`);
-	img.setAttribute("alt", `${playerChoice}`);
+	img.setAttribute("src", `./img/${choice}.svg`);
+	img.setAttribute("alt", `${choice}`);
 
 	const p = document.createElement("p");
-	p.textContent = `${playerChoice}`;
+	p.textContent = `${choice}`;
 
 	choiceParent.replaceChildren(img, p);
 }
 
 function getComputerChoice() {
-	const choices = ["Rock", "Paper", "Scissors"];
+	const choices = ["rock", "paper", "scissors"];
 	const randomNumber = Math.floor(Math.random() * choices.length);
 
 	return choices[randomNumber];
-}
-
-function playRound(playerSelection, computerSelection) {
-	if (playerSelection === computerSelection) {
-		return "draw";
-	} else if (playerSelection === "Rock" && computerSelection === "Scissors") {
-		return "player";
-	} else if (playerSelection === "Paper" && computerSelection === "Rock") {
-		return "player";
-	} else if (playerSelection === "Scissors" && computerSelection === "Paper") {
-		return "player";
-	} else {
-		return "computer";
-	}
 }
