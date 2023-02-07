@@ -25,6 +25,13 @@ function playRound() {
 	}
 }
 
+function getComputerChoice() {
+	const choices = ["rock", "paper", "scissors"];
+	const randomNumber = Math.floor(Math.random() * choices.length);
+
+	return choices[randomNumber];
+}
+
 function populateChoice(choice, isPlayer) {
 	const choiceParent = document.querySelector(
 		`.${isPlayer ? "player" : "computer"} .choice`
@@ -38,11 +45,4 @@ function populateChoice(choice, isPlayer) {
 	p.textContent = `${choice}`;
 
 	choiceParent.replaceChildren(img, p);
-}
-
-function getComputerChoice() {
-	const choices = ["rock", "paper", "scissors"];
-	const randomNumber = Math.floor(Math.random() * choices.length);
-
-	return choices[randomNumber];
 }
