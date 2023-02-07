@@ -55,6 +55,24 @@ button {
 	font-size: 18px;
 }
 
+.how-to {
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 15px;
+	position: absolute;
+	padding: 50px;
+	border-radius: 10px;
+	background-color: rgba(30, 30, 30);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.how-to img {
+	width: 500px;
+	height: auto;
+}
+
 .scores {
 	display: flex;
 	gap: 50px;
