@@ -11,6 +11,7 @@ function playRound() {
 
 	populateChoice("player", playerChoice);
 	populateChoice("computer", computerChoice);
+	highlightComputerChoice(computerChoice);
 
 	let roundWinner = "computer";
 
@@ -51,6 +52,17 @@ function populateChoice(picker, choice) {
 	p.textContent = capitalizedChoice;
 
 	choiceParent.replaceChildren(img, p);
+}
+
+function highlightComputerChoice(choice) {
+	const allOptions = document.querySelectorAll(".computer .options div");
+
+	allOptions.forEach((option) => {
+		option.style.background = "inherit";
+	});
+
+	const choiceDiv = document.querySelector(`.computer .${choice}`);
+	choiceDiv.style.background = "rgb(40, 40, 40)";
 }
 
 function populateRoundOutcome(roundWinner) {
@@ -102,7 +114,10 @@ function endGame(gameWinner) {
 	const h2 = document.createElement("h2");
 	h2.textContent = `${gameWinner === "player" ? "You" : "The Computer"} Won!`;
 
-	gameOverCard.replaceChildren(img, h2);
+	const p = document.createElement("p");
+	p.textContent = "Refresh the page to play again!";
+
+	gameOverCard.replaceChildren(img, h2, p);
 
 	const mainDiv = document.querySelector(".main");
 
