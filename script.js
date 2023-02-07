@@ -78,5 +78,6 @@ function populateRoundOutcome(outcome) {
 
 function updateScore(scorer) {
 	const scoreElement = document.querySelector(`.scores .${scorer} .score`);
-	scoreElement.textContent = ++scoreElement.textContent;
+	const updatedScore = ++scoreElement.textContent;
+	scoreElement.textContent = updatedScore;
 }
