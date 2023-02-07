@@ -1,5 +1,28 @@
 "use strict";
 
+let isHowToVisible = false;
+const howToBtn = document.querySelector(".header button");
+howToBtn.addEventListener("click", showHowToDiv);
+
+function showHowToDiv() {
+	if (isHowToVisible) return;
+	console.log("yup");
+	const howToDiv = document.querySelector(".how-to");
+	howToDiv.style.display = "flex";
+	isHowToVisible = true;
+}
+
+const mainDiv = document.querySelector(".main");
+mainDiv.addEventListener("click", hideHowToDiv);
+
+function hideHowToDiv() {
+	if (!isHowToVisible) return;
+	console.log("nope");
+	const howToDiv = document.querySelector(".how-to");
+	howToDiv.style.display = "none";
+	isHowToVisible = false;
+}
+
 const playerBtns = document.querySelectorAll(".options button");
 playerBtns.forEach((button) => {
 	button.addEventListener("click", playRound);
