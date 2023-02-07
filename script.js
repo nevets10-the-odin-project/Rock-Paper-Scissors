@@ -14,11 +14,11 @@ function playRound() {
 
 	if (playerChoice === computerChoice) {
 		console.log("Draw");
-	} else if (playerChoice === "rock" && computerChoice === "scissors") {
-		console.log("Win");
-	} else if (playerChoice === "paper" && computerChoice === "rock") {
-		console.log("Win");
-	} else if (playerChoice === "scissors" && computerChoice === "paper") {
+	} else if (
+		(playerChoice === "rock" && computerChoice === "scissors") ||
+		(playerChoice === "paper" && computerChoice === "rock") ||
+		(playerChoice === "scissors" && computerChoice === "paper")
+	) {
 		console.log("Win");
 	} else {
 		console.log("Lose");
