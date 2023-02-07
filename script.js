@@ -13,15 +13,15 @@ function playRound() {
 	populateChoice(computerChoice, false);
 
 	if (playerChoice === computerChoice) {
-		roundOutcome("draw");
+		populateRoundOutcome("draw");
 	} else if (
 		(playerChoice === "rock" && computerChoice === "scissors") ||
 		(playerChoice === "paper" && computerChoice === "rock") ||
 		(playerChoice === "scissors" && computerChoice === "paper")
 	) {
-		roundOutcome("win");
+		populateRoundOutcome("win");
 	} else {
-		roundOutcome("lose");
+		populateRoundOutcome("lose");
 	}
 }
 
@@ -41,6 +41,7 @@ function populateChoice(choice, isPlayer) {
 		.charAt(0)
 		.toUpperCase()
 		.concat(choice.slice(1));
+
 	const img = document.createElement("img");
 	img.setAttribute("src", `./img/${choice}.svg`);
 	img.setAttribute("alt", `${choice}`);
@@ -51,7 +52,7 @@ function populateChoice(choice, isPlayer) {
 	choiceParent.replaceChildren(img, p);
 }
 
-function roundOutcome(outcome) {
+function populateRoundOutcome(outcome) {
 	const outcomeParent = document.querySelector(".round-outcome");
 	const capitalizedOutcome = outcome
 		.charAt(0)
