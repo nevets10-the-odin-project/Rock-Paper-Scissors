@@ -94,6 +94,8 @@ button {
 	flex-basis: 300px;
 	display: flex;
 	flex-direction: column;
+	gap: 10px;
+	text-align: center;
 }
 
 .round-outcome {
