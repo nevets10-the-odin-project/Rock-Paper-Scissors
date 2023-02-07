@@ -119,6 +119,19 @@ body {
 	height: 100px;
 }
 
+.game-over-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 15px;
+	position: absolute;
+	padding: 100px;
+	border-radius: 10px;
+	background-color: rgba(75, 75, 75);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .footer {
 	background-color: rgb(40, 40, 40);
 	display: flex;
