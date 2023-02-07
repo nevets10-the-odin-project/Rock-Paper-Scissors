@@ -87,6 +87,11 @@ function updateScore(scorer) {
 }
 
 function endGame(winner) {
+	const playerBtns = document.querySelectorAll(".options button");
+	playerBtns.forEach((button) => {
+		button.removeEventListener("click", playRound);
+	});
+
 	const gameOverCard = document.createElement("div");
 	gameOverCard.setAttribute("class", "game-over-card");
 
