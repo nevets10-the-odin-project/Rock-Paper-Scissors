@@ -68,7 +68,7 @@ function populateChoice(picker, choice) {
 		.concat(choice.slice(1));
 
 	const img = document.createElement("img");
-	img.setAttribute("src", `./img/${choice}.svg`);
+	img.setAttribute("src", `./img/${choice}.png`);
 	img.setAttribute("alt", `${choice}`);
 
 	const p = document.createElement("p");
@@ -95,15 +95,15 @@ function populateRoundOutcome(roundWinner) {
 	const h2 = document.createElement("h2");
 
 	if (roundWinner === "player") {
-		img.setAttribute("src", "./img/win.svg");
+		img.setAttribute("src", "./img/win.png");
 		img.setAttribute("alt", "Win");
 		h2.textContent = "You Win!";
 	} else if (roundWinner === "computer") {
-		img.setAttribute("src", "./img/lose.svg");
+		img.setAttribute("src", "./img/lose.png");
 		img.setAttribute("alt", "Lose");
 		h2.textContent = "The Computer Wins!";
 	} else {
-		img.setAttribute("src", "./img/draw.svg");
+		img.setAttribute("src", "./img/draw.png");
 		img.setAttribute("alt", "Draw");
 		h2.textContent = "Draw!";
 	}
