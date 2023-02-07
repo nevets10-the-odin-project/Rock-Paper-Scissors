@@ -80,4 +80,26 @@ function updateScore(scorer) {
 	const scoreElement = document.querySelector(`.scores .${scorer} .score`);
 	const updatedScore = ++scoreElement.textContent;
 	scoreElement.textContent = updatedScore;
+
+	if (updatedScore >= 5 && scorer !== "draw") {
+		endGame(scorer);
+	}
+}
+
+function endGame(winner) {
+	const gameOverCard = document.createElement("div");
+	gameOverCard.setAttribute("class", "game-over-card");
+
+	const img = document.createElement("img");
+	img.setAttribute("src", `./img/${winner}_trophy.png`);
+	img.setAttribute("alt", "Trophy");
+
+	const h2 = document.createElement("h2");
+	h2.textContent = `${winner === "player" ? "You" : "The computer"} Won!`;
+
+	gameOverCard.replaceChildren(img, h2);
+
+	const mainDiv = document.querySelector(".main");
+
+	mainDiv.appendChild(gameOverCard);
 }
