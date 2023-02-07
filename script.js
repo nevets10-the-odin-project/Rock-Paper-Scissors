@@ -6,7 +6,6 @@ rulesBtn.addEventListener("click", showRulesDiv);
 
 function showRulesDiv() {
 	if (areRulesVisible) return;
-	console.log("yup");
 	const howToDiv = document.querySelector(".how-to");
 	howToDiv.style.display = "flex";
 	areRulesVisible = true;
@@ -17,10 +16,24 @@ mainDiv.addEventListener("click", hideRulesDiv);
 
 function hideRulesDiv() {
 	if (!areRulesVisible) return;
-	console.log("nope");
 	const howToDiv = document.querySelector(".how-to");
 	howToDiv.style.display = "none";
 	areRulesVisible = false;
+}
+
+const howToBtn = document.querySelector(".header .how");
+howToBtn.addEventListener("click", showHowTo, { once: true });
+
+function showHowTo() {
+	const playerOptions = document.querySelector(".player .options");
+	playerOptions.style.background = "steelblue";
+
+	const playerDiv = document.querySelector(".play-field .player");
+
+	const h3 = document.createElement("h3");
+	h3.textContent = "CLICK ON THESE UNTIL YOU WIN.";
+
+	playerDiv.appendChild(h3);
 }
 
 const playerBtns = document.querySelectorAll(".options button");
