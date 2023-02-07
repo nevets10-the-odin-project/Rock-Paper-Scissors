@@ -9,23 +9,23 @@ function playRound() {
 	const playerChoice = this.classList.value;
 	const computerChoice = getComputerChoice();
 
-	populateChoice(playerChoice, true);
-	populateChoice(computerChoice, false);
+	populateChoice("player", playerChoice);
+	populateChoice("computer", computerChoice);
 
-	if (playerChoice === computerChoice) {
-		populateRoundOutcome("draw");
-		updateScore("draw");
-	} else if (
+	let roundWinner = "computer";
+
+	if (
 		(playerChoice === "rock" && computerChoice === "scissors") ||
 		(playerChoice === "paper" && computerChoice === "rock") ||
 		(playerChoice === "scissors" && computerChoice === "paper")
 	) {
-		populateRoundOutcome("win");
-		updateScore("player");
-	} else {
-		populateRoundOutcome("lose");
-		updateScore("computer");
+		roundWinner = "player";
+	} else if (playerChoice === computerChoice) {
+		roundWinner = "draw";
 	}
+
+	populateRoundOutcome(roundWinner);
+	updateScore(roundWinner);
 }
 
 function getComputerChoice() {
@@ -35,10 +35,8 @@ function getComputerChoice() {
 	return choices[randomNumber];
 }
 
-function populateChoice(choice, isPlayer) {
-	const choiceParent = document.querySelector(
-		`.${isPlayer ? "player" : "computer"} .choice`
-	);
+function populateChoice(picker, choice) {
+	const choiceParent = document.querySelector(`.${picker} .choice`);
 
 	const capitalizedChoice = choice
 		.charAt(0)
@@ -55,38 +53,40 @@ function populateChoice(choice, isPlayer) {
 	choiceParent.replaceChildren(img, p);
 }
 
-function populateRoundOutcome(outcome) {
+function populateRoundOutcome(roundWinner) {
 	const outcomeParent = document.querySelector(".round-outcome");
-	const capitalizedOutcome = outcome
-		.charAt(0)
-		.toUpperCase()
-		.concat(outcome.slice(1));
 
 	const img = document.createElement("img");
-	img.setAttribute("src", `./img/${outcome}.svg`);
-	img.setAttribute("alt", `${outcome}`);
-
 	const h2 = document.createElement("h2");
-	if (outcome === "win" || outcome === "lose") {
-		h2.textContent = `You ${capitalizedOutcome}!`;
+
+	if (roundWinner === "player") {
+		img.setAttribute("src", "./img/win.svg");
+		img.setAttribute("alt", "Win");
+		h2.textContent = "You Win!";
+	} else if (roundWinner === "computer") {
+		img.setAttribute("src", "./img/lose.svg");
+		img.setAttribute("alt", "Lose");
+		h2.textContent = "The Computer Wins!";
 	} else {
-		h2.textContent = `${capitalizedOutcome}!`;
+		img.setAttribute("src", "./img/draw.svg");
+		img.setAttribute("alt", "Draw");
+		h2.textContent = "Draw!";
 	}
 
 	outcomeParent.replaceChildren(img, h2);
 }
 
-function updateScore(scorer) {
-	const scoreElement = document.querySelector(`.scores .${scorer} .score`);
+function updateScore(roundWinner) {
+	const scoreElement = document.querySelector(`.scores .${roundWinner} .score`);
 	const updatedScore = ++scoreElement.textContent;
 	scoreElement.textContent = updatedScore;
 
-	if (updatedScore >= 5 && scorer !== "draw") {
-		endGame(scorer);
+	if (updatedScore >= 5 && roundWinner !== "draw") {
+		endGame(roundWinner);
 	}
 }
 
-function endGame(winner) {
+function endGame(gameWinner) {
 	const playerBtns = document.querySelectorAll(".options button");
 	playerBtns.forEach((button) => {
 		button.removeEventListener("click", playRound);
@@ -96,11 +96,11 @@ function endGame(winner) {
 	gameOverCard.setAttribute("class", "game-over-card");
 
 	const img = document.createElement("img");
-	img.setAttribute("src", `./img/${winner}_trophy.png`);
+	img.setAttribute("src", `./img/${gameWinner}_trophy.png`);
 	img.setAttribute("alt", "Trophy");
 
 	const h2 = document.createElement("h2");
-	h2.textContent = `${winner === "player" ? "You" : "The computer"} Won!`;
+	h2.textContent = `${gameWinner === "player" ? "You" : "The Computer"} Won!`;
 
 	gameOverCard.replaceChildren(img, h2);
 
