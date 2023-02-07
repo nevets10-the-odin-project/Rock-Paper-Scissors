@@ -13,15 +13,15 @@ function playRound() {
 	populateChoice(computerChoice, false);
 
 	if (playerChoice === computerChoice) {
-		roundOutcome("Draw");
+		roundOutcome("draw");
 	} else if (
 		(playerChoice === "rock" && computerChoice === "scissors") ||
 		(playerChoice === "paper" && computerChoice === "rock") ||
 		(playerChoice === "scissors" && computerChoice === "paper")
 	) {
-		roundOutcome("Win");
+		roundOutcome("win");
 	} else {
-		roundOutcome("Lose");
+		roundOutcome("lose");
 	}
 }
 
@@ -49,16 +49,20 @@ function populateChoice(choice, isPlayer) {
 
 function roundOutcome(outcome) {
 	const outcomeParent = document.querySelector(".round-outcome");
+	const capitalizedOutcome = outcome
+		.charAt(0)
+		.toUpperCase()
+		.concat(outcome.slice(1));
 
 	const img = document.createElement("img");
 	img.setAttribute("src", `./img/${outcome}.svg`);
 	img.setAttribute("alt", `${outcome}`);
 
 	const h2 = document.createElement("h2");
-	if (outcome === "Win" || outcome === "Lose") {
-		h2.textContent = `You ${outcome}!`;
+	if (outcome === "win" || outcome === "lose") {
+		h2.textContent = `You ${capitalizedOutcome}!`;
 	} else {
-		h2.textContent = `${outcome}!`;
+		h2.textContent = `${capitalizedOutcome}!`;
 	}
 
 	outcomeParent.replaceChildren(img, h2);
