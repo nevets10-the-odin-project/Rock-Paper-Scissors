@@ -37,12 +37,16 @@ function populateChoice(choice, isPlayer) {
 		`.${isPlayer ? "player" : "computer"} .choice`
 	);
 
+	const capitalizedChoice = choice
+		.charAt(0)
+		.toUpperCase()
+		.concat(choice.slice(1));
 	const img = document.createElement("img");
 	img.setAttribute("src", `./img/${choice}.svg`);
 	img.setAttribute("alt", `${choice}`);
 
 	const p = document.createElement("p");
-	p.textContent = `${choice}`;
+	p.textContent = capitalizedChoice;
 
 	choiceParent.replaceChildren(img, p);
 }
