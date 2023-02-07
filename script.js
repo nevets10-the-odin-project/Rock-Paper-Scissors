@@ -14,14 +14,17 @@ function playRound() {
 
 	if (playerChoice === computerChoice) {
 		populateRoundOutcome("draw");
+		updateScore("draw");
 	} else if (
 		(playerChoice === "rock" && computerChoice === "scissors") ||
 		(playerChoice === "paper" && computerChoice === "rock") ||
 		(playerChoice === "scissors" && computerChoice === "paper")
 	) {
 		populateRoundOutcome("win");
+		updateScore("player");
 	} else {
 		populateRoundOutcome("lose");
+		updateScore("computer");
 	}
 }
 
@@ -71,4 +74,10 @@ function populateRoundOutcome(outcome) {
 	}
 
 	outcomeParent.replaceChildren(img, h2);
+}
+
+function updateScore(scorer) {
+	const scoreElement = document.querySelector(`.scores .${scorer} .score`);
+	let scoreNum = +scoreElement.textContent;
+	scoreElement.textContent = ++scoreNum;
 }
