@@ -1,26 +1,39 @@
 "use strict";
 
-let isHowToVisible = false;
-const howToBtn = document.querySelector(".header button");
-howToBtn.addEventListener("click", showHowToDiv);
+let areRulesVisible = false;
+const rulesBtn = document.querySelector(".header .rules");
+rulesBtn.addEventListener("click", showRulesDiv);
 
-function showHowToDiv() {
-	if (isHowToVisible) return;
-	console.log("yup");
+function showRulesDiv() {
+	if (areRulesVisible) return;
 	const howToDiv = document.querySelector(".how-to");
 	howToDiv.style.display = "flex";
-	isHowToVisible = true;
+	areRulesVisible = true;
 }
 
 const mainDiv = document.querySelector(".main");
-mainDiv.addEventListener("click", hideHowToDiv);
+mainDiv.addEventListener("click", hideRulesDiv);
 
-function hideHowToDiv() {
-	if (!isHowToVisible) return;
-	console.log("nope");
+function hideRulesDiv() {
+	if (!areRulesVisible) return;
 	const howToDiv = document.querySelector(".how-to");
 	howToDiv.style.display = "none";
-	isHowToVisible = false;
+	areRulesVisible = false;
+}
+
+const howToBtn = document.querySelector(".header .how");
+howToBtn.addEventListener("click", showHowTo, { once: true });
+
+function showHowTo() {
+	const playerOptions = document.querySelector(".player .options");
+	playerOptions.style.background = "steelblue";
+
+	const playerDiv = document.querySelector(".play-field .player");
+
+	const h3 = document.createElement("h3");
+	h3.textContent = "CLICK ON THESE UNTIL YOU WIN.";
+
+	playerDiv.appendChild(h3);
 }
 
 const playerBtns = document.querySelectorAll(".options button");
